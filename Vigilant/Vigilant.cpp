@@ -1,11 +1,21 @@
 // Vigilant.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+#include "Polynomial.h"
 #include <iostream>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "Vigilant starting..." << std::endl;
+    Polynomial poly(2);
+    poly.setCoeff();
+        
+    double initial = 0;
+
+    for (int i = 0; i < 300; i++)
+    {
+        initial = i * 0.5;
+        std::cout << "value at " << poly.valueAt(initial) << std::endl;
+    }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

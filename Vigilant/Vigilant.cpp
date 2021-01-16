@@ -1,30 +1,21 @@
-// Vigilant.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 #include "Polynomial.h"
 #include <iostream>
 
 int main()
 {
     std::cout << "Vigilant starting..." << std::endl;
-    Polynomial poly(2);
-    poly.setCoeff();
-        
-    double initial = 0;
+    Polynomial poly(0);
+    double arr[] = {
+        1
+    };
+    poly.setCoeff(arr);
+    std::cout << "Value of polynomial at 1 is " << poly.valueAt(1.1) << std::endl;
+    std::cout << "Value of polynomial at 1 is " << poly.valueAt(2) << std::endl;
+                                              
+    std::cout << "Value of derivative at 1 is " << poly.derivative().valueAt(1) << std::endl;
+    std::cout << "Value of derivative at 1 is " << poly.derivative().valueAt(2) << std::endl;
 
-    for (int i = 0; i < 300; i++)
-    {
-        initial = i * 0.5;
-        std::cout << "value at " << poly.valueAt(initial) << std::endl;
-    }
+    std::cout << "Program has ended. Please press enter to exit." << std::endl;
+    std::cin.get();
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

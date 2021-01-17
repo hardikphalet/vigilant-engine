@@ -1,6 +1,6 @@
 #include "Polynomial.h"
 
-Polynomial::Polynomial(int ord)  // initialiser for the polynomial class
+Polynomial::Polynomial(const int ord)  // initialiser for the polynomial class
 {
 	order = ord;
 	for (int i = 0; i < order + 1; i++)
@@ -14,7 +14,7 @@ std::vector<double> Polynomial::getCoeff()  // getter for coefficients
 	return coeff;
 }
 
-double Polynomial::valueAt(double xVal)  // value of polynomial at particular value in it's domain
+double Polynomial::valueAt(const double xVal)  // value of polynomial at particular value in it's domain
 {
 	double res = 0.0;
 	for (double i = 0; i < coeff.size(); i++)
@@ -81,7 +81,30 @@ Polynomial Polynomial::derivative()
 	return poly;
 }
 
-double Polynomial::derivativeAt(double xVal)
+double Polynomial::derivativeAt(const double xVal)
 {
 	return this->derivative().valueAt(xVal);
+}
+
+double Polynomial::newtonRaphson(double initial, double iterations)
+{
+	double res = 0.0;
+	for (int i = 0; i < iterations; i++)
+	{
+		res -= (valueAt(res) / derivative().valueAt(res));
+	}
+	return res;
+}
+
+double Polynomial::newtonRaphsonLim(double initial, double eps)
+{
+	double h = valueAt(initial) / derivative().valueAt(initial);
+	double res = initial;
+	while (std::abs(h) >= eps)
+	{
+		h = valueAt(res) / derivative().valueAt(res);
+
+		res -= h;
+	}
+	return res;
 }
